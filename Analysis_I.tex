@@ -437,10 +437,18 @@ Very similar method to what we have applied before except decomposing an element
                         $(\bigcup_{\alpha}A_{\alpha})^c = \bigcap_{\alpha} A_{\alpha} ^ c$
     \end{center}
 \end{itemize}
-Let's prove the first one and the forth one to give an example and basic idea.\\
+Let's prove the first one and the fourth one to give an example and basic idea.\\
 \textbf{Proof}:(First One)\\
-Denote right hand side as $S_r$ and left hand side as $S_l$. $\forall x \in S_r$, $x \in \bigcap_{\alpha} A_\alpha $ or $x \in \bigcap_\beta B_\beta$, if $x \in \bigcap_\alpha A_\alpha$, then $x \in A_\alpha$ for all $\alpha$.
-Thus $\forall (\alpha, \beta) \in A \times B$, we have $x \in A_\alpha \cup B_\beta$, $x \in S_r$, the other case is same as this case. Now let's pick any element from $S_r$,
+Denote the set on the right hand side as $S_r$ and set on the left hand side as $S_l$. 
+Then $\forall x \in S_r$, two cases needed to be consider. $\forall \alpha \in A$, $x \in A_{\alpha}$, then
+$x \in \bigcap_{\alpha} A_{\alpha}$. Otherwise, $\exists \alpha_1 \in A$ such that $x \notin A_{\alpha_1}$. Then 
+$x \in \bigcap_{\beta} A_{\alpha_1} \bigcup B_{\beta}$, which implies that $x \in B_{\beta}$ for all $\beta \in B$. 
+This means $x \in \bigcap_{\beta} B_{\beta}$. In both cases, $x \in S_l$. Thus, $S_l \subseteq S_r$. The other side 
+is obvious which you can imply by yourself.\qed\\
+\textbf{Proof}:(Fourth One)\\
+Using similar notations for sets in both sides. $\forall x \in S_r$, $x \notin \bigcup_{\alpha} A_{\alpha}$. That means $x \notin A_\alpha$ for
+all $\alpha \in A$. This is another way of saying $x \in A_{\alpha}^c$ for all $\alpha$. So $x \in S_l$ by definition. Suppose 
+now $x \in S_r$, $x \in A_{\alpha}^c$ for all $\alpha$. $x \notin \bigcup_{\alpha} A_{\alpha}$ which means $x \in S_r$.\qed
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \section{Groups}
