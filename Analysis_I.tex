@@ -12,6 +12,8 @@
 \usepackage{amsfonts}
 \usepackage{hyperref}
 \usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{cd}
 \usepackage[a4paper,
             bindingoffset=0.2in,
             left=0.5in,
@@ -451,6 +453,35 @@ all $\alpha \in A$. This is another way of saying $x \in A_{\alpha}^c$ for all $
 now $x \in S_r$, $x \in A_{\alpha}^c$ for all $\alpha$. $x \notin \bigcup_{\alpha} A_{\alpha}$ which means $x \in S_r$.\qed
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
+\section{Functions}
+\begin{defin}{Function}
+    Suppose $X$, $Y$ are two sets. A function from $X$ to $Y$ is a rule which for each element $x$ of $X$, it associates $x$ with an element in $Y$, 
+    which we denote by $f(x)$.
+\end{defin}
+To have a formal definition of function, we can define functions as triples $(X, G, Y)$, but that would be more complex if you define function like that since you need 
+prove everything from that, so here we just use our `ambiguous' definition. They will be enough for understand. $X$ is called \textbf{domain} of $f$. $Y$ is called \textbf{codomain} of $f$. There are also some important terms which we need to specify:
+$$
+\text{im}(f) \coloneq \{y \in Y\ |\ \exists x \in X,\ y = f(x)\}
+$$
+$$
+\text{graph}(f) \coloneq \{(x,y) \in X \times Y\ |\ x \in X\}
+$$
+\subsection{Composition of Functions}
+Suppose $f : X \rightarrow Y$, $g : Y \rightarrow V$ be two functions. Denote a new function as $g \circ f : X \rightarrow V$. Define it as
+$g \circ f (x) = g(f(x))$. Now you can prove if there are three function $f, g, h$ with appropriate domain and codomain. Then
+$$
+(h \circ g) \circ f = h \circ (g \circ f)
+$$
+This is \textbf{associativity} in composition of functions. We have already seen functions are between two sets. So sometimes we can draw a diagram to 
+represent different sets and functions between them.
+\begin{center}
+    \begin{tikzcd}
+        A \arrow[rd, "f"] \arrow[r, "\phi"] & B \arrow[d,"g"]\\
+                                        & C         
+    \end{tikzcd}
+    
+\end{center}
+This leads to a definition which is designed to discover the properties of this diagram.
 \section{Groups}
 \subsection{Operations}
 \begin{defin}{Operation}
