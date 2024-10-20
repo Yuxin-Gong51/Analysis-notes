@@ -10,6 +10,7 @@
 \usepackage{mathtools}
 \usepackage{etoolbox}
 \usepackage{amsfonts}
+\usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{tikz}
 \usepackage{tikz-cd}
@@ -261,7 +262,7 @@ in the set, we can say $a \in A$, $c \in A$ but $d \not\in A$.
 Pick an example for youself and be familiar with this symbol as it will simplify your work!
 \begin{defin}{Exists $\exists$}
     Suppose $A$ is a set, $E$ is a property.
-    $$\exists x\in A: E(x)$$
+    $$\exists\ x\in A: E(x)$$
     means there exists an element in $A$, it has property $E$.
 \end{defin}
 $E$ is a property that can be almost everything you want, for example, if $A$ is a set of different people, $E$ can be ``height $\geq 175$cm''. Or
@@ -276,7 +277,7 @@ below:
     \forall x \in A : x \in B
     $$
 \end{defin}
-If $\exists b \in B$, $b \not \in A$, we call $A$ a \textbf{proper subset} of $B$, denoted by $A \subset B$.
+If $\exists\ b \in B$, $b \not \in A$, we call $A$ a \textbf{proper subset} of $B$, denoted by $A \subset B$.
 And equality of sets should then be defined as
 \begin{defin}{Equality of Sets}
     Suppose $A$, $B$ are sets, then
@@ -413,7 +414,7 @@ $$
 \underset{\alpha}\bigcap\ A_{\alpha} \coloneqq \{x \in X \ |\ \forall \alpha \in A,\ x \in A_{\alpha} \}
 $$
 $$
-\underset{\alpha}\bigcup\ A_{\alpha} \coloneqq \{x \in X\ |\ \exists \alpha \in A,\ x \in A_{\alpha}\}
+\underset{\alpha}\bigcup\ A_{\alpha} \coloneqq \{x \in X\ |\ \exists\ \alpha \in A,\ x \in A_{\alpha}\}
 $$
 \quad\ \  Let $\{A_{\alpha}\ |\ \alpha \in A\}$ and $\{B_{\beta}\ |\ \beta \in B\}$ be families of subsets of a set $X$, then $ (\bigcap_{\alpha}A_{\alpha}) \cap ( \bigcap_{\beta} B_{\beta}) = \bigcap_{(\alpha, \beta)} A_{\alpha} \cap B_{\beta}$.\\
 \textbf{Proof}:\\Let
@@ -443,7 +444,7 @@ Let's prove the first one and the fourth one to give an example and basic idea.\
 \textbf{Proof}:(First One)\\
 Denote the set on the right hand side as $S_r$ and set on the left hand side as $S_l$. 
 Then $\forall x \in S_r$, two cases needed to be consider. $\forall \alpha \in A$, $x \in A_{\alpha}$, then
-$x \in \bigcap_{\alpha} A_{\alpha}$. Otherwise, $\exists \alpha_1 \in A$ such that $x \notin A_{\alpha_1}$. Then 
+$x \in \bigcap_{\alpha} A_{\alpha}$. Otherwise, $\exists\ \alpha_1 \in A$ such that $x \notin A_{\alpha_1}$. Then 
 $x \in \bigcap_{\beta} A_{\alpha_1} \bigcup B_{\beta}$, which implies that $x \in B_{\beta}$ for all $\beta \in B$. 
 This means $x \in \bigcap_{\beta} B_{\beta}$. In both cases, $x \in S_l$. Thus, $S_l \subseteq S_r$. The other side 
 is obvious which you can imply by yourself.\qed\\
@@ -461,7 +462,7 @@ now $x \in S_r$, $x \in A_{\alpha}^c$ for all $\alpha$. $x \notin \bigcup_{\alph
 To have a formal definition of function, we can define functions as triples $(X, G, Y)$, but that would be more complex if you define function like that since you need 
 prove everything from that, so here we just use our `ambiguous' definition. They will be enough for understand. $X$ is called \textbf{domain} of $f$. $Y$ is called \textbf{codomain} of $f$. There are also some important terms which we need to specify:
 $$
-\text{im}(f) \coloneq \{y \in Y\ |\ \exists x \in X,\ y = f(x)\}
+\text{im}(f) \coloneq \{y \in Y\ |\ \exists\ x \in X,\ y = f(x)\}
 $$
 $$
 \text{graph}(f) \coloneq \{(x,y) \in X \times Y\ |\ x \in X\}
@@ -670,4 +671,132 @@ Second Sylow's Theorem. Pick one particular Sylow $p$-subgroup $H$. Call its sta
 deduce $s | m$. Now let's prove the second identity, where we focus on the group action of $H$ on $S$. The orbit of $H$ is just itself because $H$ will be fixed by any element from $H$ by conjugation. Any other set who is not fixed by $H$ will have orbit of order 
 greater than $2$, and the order divides a positive power of $p$. Therefore we only need to prove the only set that is fixed by $H$ is $H$ itself. Suppose that there is another set $H'$ which is fixed by $H$. 
 Then the normalizer $N'$ of $H'$ contains $H$ and $H'$ as Sylow $p$-subgroups. $\exists\ n \in N$, such that $n H' n^{-1} = H$, however $H'$ is normal in $N'$. Thus, $H = H'$. \qed
+\section{Metric Spaces and Convergence}
+\subsection{Metric Spaces}
+It's important to abstract the model of $\mathbb{R}$ with respect to absolute value $|\cdot|$ and extend it into more general spaces. Metric spaces are spaces which have some key properties of $\mathbb{R}$.
+\begin{defin}{Metric}
+    Let $X$ be a set. A function $d$ is said to be a \textbf{metric} on $X$ if $d : X \times X \rightarrow \mathbb{R}$ with three properties:
+    \begin{itemize}
+        \item[(M1)] $d(x,y) = 0 \Longleftrightarrow x = y$
+        \item[(M2)] $d(x,y) = d(y,x)$
+        \item[(M3)] $d(x,y) \leq d(x,z) + d(z,y)$  
+    \end{itemize}
+\end{defin}
+Such a tuple $(X, d)$ is called a metric space. Similar inequalities hold in metric space, one of them is reverse triangle inequality. Let's prove that 
+$$
+d(x,y) \geq |d(x,z) - d(z,y)|
+$$
+This is because that $d(x,y) + d(y,z) \geq d(x,z)$, that is $d(x,y) \geq d(x,z) - d(z,y)$. Since same result applies to $d(y,x)$, leading 
+$d(y,x) \geq d(y,z) - d(z,x)$.\qed
+\begin{defin}{Open Ball and Closed Ball}
+    Let $(X,d)$ be a metric space. $a \in X$ and $r > 0$, the open ball with center at $a$ and radius $r$ is defined to be
+    $$
+    \mathbb{B}(a,r) \coloneq \{x \in X\ |\ d(a,x) < r\}
+    $$
+    the closed ball with center $a$ and radius $r > 0$ is 
+    $$
+    \bar{\mathbb{B}}(a,r) \coloneq \{x \in X\ |\ d(a,x) \leq r\}
+    $$ 
+\end{defin}
+\subsection{Convergence of Sequences}
+In general, a sequence can be imaged as a row of elements from a set. In mathematics, we define it rigorously as a function.
+\begin{defin}{Sequence}
+    Let $X$ be a set, a \textbf{sequence} is a function $\phi$ from $\mathbb{N}$ to $X$. Often denoted by 
+    $$
+    (x_n), (x_n)_{n \in \mathbb{N}}
+    $$
+    where $x_n = \phi(n)$.
+\end{defin}
+\textbf{Almost all} is a term which can be used to describe some properties in sequence. Let $(x_n)$ be a sequence in $X$ and let $E$ be a 
+property. We say that $E$ holds for almost all terms of $(x_n)$ if $\exists\ m \in \mathbb{N}$ such that $E(x_n)$ holds for $n \geq m$. Now back to the 
+case where $(X,d)$ is a metric space. $U \subseteq X$ is a \textbf{neighborhood} of $a \in X$ if $\exists\ r > 0$ such that $\mathbb{B}(a,r) \subseteq U$.
+Set of all neighborhood of the point $a$ is denoted by $\mathcal{U}(a)$.\\
+Let's think about a sequence in a space. For example $\mathbb{R}^2$, 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = 0.5\textwidth]{Sequence.png}
+    \caption{Sequence $\left((-1)^n - \frac{1}{n}, 2 + \frac{1}{n}\right)$}
+\end{figure}
+\\
+It can be seen from the diagram that $(-1,2)$ and $(1,2)$ are two points with special properties. We will define those points as cluster points. $a \in X$ is a \textbf{cluster point}
+of $(x_n)$ if every neighborhood of $a$ contains infinitely many terms of the sequence. This is equivalent to $\forall\ U \in \mathcal{U}(a), \forall\ m \in \mathbb{N}$, there is some $n \geq m$,
+such that $x_n \in U$. Now we are able to define the limit of a sequence.
+\begin{defin}{Limit of Sequence}
+    A sequence $(x_n)$ coverges with limit $a$ if each neighborhood of $a$ contains almost all the terms of the sequence.
+    It is denoted by 
+    $$
+    \lim_{n \to \infty}  x_n = a
+    $$
+\end{defin}
+Some statements are more useful in proving the limit of the sequence. Let's prove the following one is equivalent to the definition of the limit. 
+\begin{center}
+    $\forall\ \epsilon > 0$, $\exists\ N \in \mathbb{N}$, $\forall\ n \geq N$, $x_n \in \mathbb{B}(a,\epsilon)$.
+\end{center}
+Since $\mathbb{B}(a, \epsilon)$ is a neighborhood, so implication from $\lim x_n$ to this is obvious. Now suppose this holds, then $\forall\ U \in \mathcal{U}(a)$, $\exists\ r > 0$, such that $\mathbb{B}(a,r) \subseteq U$.
+$\exists\ N \in \mathbb{N}$, $\forall\ n \geq N$, $x_n \in \mathbb{B}(a,r) \subseteq U$.\qed 
+\\It's worth to pick an example of metric space and limit of the sequence. Let $(X_i, d_i), 1 \leq i \leq n$ to be metric spaces. $X \coloneq X_1 \times \cdots \times X_n$. Define 
+$$
+d(x, y)\coloneq \max_{1 \leq i \leq n}d(x_i, y_i)
+$$
+where $x = (x_1, \dots, x_n)$, $y = (y_1, \dots, y_n)$. $d$ is called a \textbf{product metric}. Let's show that $d$ is a metric on $X$.\\
+We first verify M1. If $d(x,y) = 0$, then $\displaystyle{\max_{1 \leq i \leq n}}d(x_i, y_i) = 0$, this implies that $d(x_i,y_i) = 0$ for all $i$. Therefore $x = y$. For M2, since $d(x_i, y_i) = d(y_i, x_i)$, $d(x,y) = d(y,x)$.
+To prove M3, pick another $z \in X = (z_1, \dots, z_n)$. $d(x, y) = \max d(x_i, y_i) \leq \max (d(x_i, z_i) + d(z_i, y_i)) \leq \max d(x_i, z_i) + \max d(z_i, y_i) = d(x,z) + d(z, y)$. Thus it follows that $(X, d)$ is a metric space.\qed\\
+Associate this metric space with limit of sequence. Let's prove sequence $(x_m) = ((x_m ^ 1, \dots , x_m ^n))_{m \in \mathbb{N}}$ converges to point $a = (a^1, \dots ,a^n)$ iff the sequence $(x_m ^ j)_{m \in \mathbb{N}} \rightarrow a^j$ for all $j$.
+This is quite obvious if you write down the definitions.\\
+There are also some important definitions for a subset of metric space. 
+\begin{defin}{Bounded Sets}
+    A subset $Y \subseteq X$ is called $d$-bounded in $X$ if there is some $M >0$ such that $d(x,y) < M$ for all $x, y$ in Y.
+\end{defin}
+\subsection{Subsequences}
+We already identify a sequence as a function from $\mathbb{N}$ to $X$. It would be better if we can define a subsequence of a sequence as a function too.
+\begin{defin}{Subsequence}
+    Suppose $\psi : \mathbb{N} \rightarrow \mathbb{N}$ is a strictly increasing function. And $\phi$ is a sequence. Then $\phi \circ \psi$ is called a subsequence of $\phi$. Denote this subsequence as 
+    $$
+    (x_{n_k})_{k \in \mathbb{N}}
+    $$
+    where $n_k = \psi(k)$.
+\end{defin}
+Notice that a subsequence is itself a sequence. Therefore, we say a subsequence converges to $a$ if 
+$$
+\forall\ \epsilon > 0, \exists\ N \in \mathbb{N}, \forall\ k \geq N, x_{n_k} \in \mathbb{B}(a, \epsilon)
+$$
+which is just rewriting the definition of convergence of sequence. There are some lemmas which are useful for subsequences which proofs are left for readers.
+\begin{lemma}{ }
+    If $(x_n)$ is a convergent sequence with limit $a$, then all its subsequences converge to $a$
+\end{lemma}
+\begin{lemma}{ }
+    A point $a$ is a cluster point of a sequence $(x_n)$ iff there is some subsequence $(x_{n_k})_{k \in \mathbb{N}}$ converges to $a$.
+\end{lemma}
+\section{Normed Vector Space}
+So far we are looking at the `distance' in only one set. What about `distance' between vectors? Similarly, we can define some good things in a vector space.
+\subsection{Norms}
+\begin{defin}{Norm}
+    Let $E$ be a vector space over $\mathbb{K}$. A function $\left \| \cdot \right \| : E \to \mathbb{R}^+$ is called a norm if the following holds:
+    \begin{itemize}
+        \item[(N1)] $\left \| x \right \|  = 0 \Longleftrightarrow x = 0$ 
+        \item[(N2)] $\left \| \lambda x \right \| = |\lambda| \left \| x \right \|$, $x \in E$ and $\lambda \in \mathbb{K}$ 
+        \item[(N3)] $\left \| x + y \right \| \leq \left \| x \right \| + \|y\| $
+    \end{itemize}
+\end{defin}
+A pair $(E, \| \cdot \|)$ is called a normed vector space if $\| \cdot \|$ is a norm on $E$. A normed vector space is also a metric space since a metric can be defined as 
+$d(x, y) \coloneq \|x - y\|$. It has a special name: \textbf{metric induced from the norm}. You can check M1 - M3 one by one. The \textbf{reversed triangle inequality} in norm can be expressed as:
+$$
+\| x - y \| \geq | \| x \| - \|y\| |
+$$
+proof of this can be derived directly from metric space property by considering $\| x \| = d(x, 0)$ and $\| y \| = d(0, y)$.\\
+Some similar terms can be defined also in normed vector spaces. An open ball with center $a$ and radius $r > 0$ is defined to be 
+$$
+\mathbb{B}(a,r) \coloneq \{x \in E\ |\ \|x - a\| < r\}
+$$ 
+and closed ball is defined to be $\bar{\mathbb{B}}(a,r) \coloneq \{x \in E\ |\ \|x - a\| \leq r\}$. We then use the definition of bounded sets in metric space to define what is meant 
+to be bounded in a normed vector space. 
+\begin{defin}{Bounded Set in Normed Vector Space}
+    A subset $X$ of $E$ is called bounded in $E$ if it is bounded in the induced metric space.
+\end{defin}
+Some equivalent statements will also be used to describe that a set is bounded in normed vector space. One is the most familiar one you will encounter in 
+many different notes:
+$$
+X \subseteq E \text{ is bounded if and only if there is some } r > 0 \text{ such that } X \subseteq r\mathbb{B}
+$$
+
 \end{document}
